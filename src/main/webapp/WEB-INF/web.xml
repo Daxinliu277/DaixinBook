@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+<!--   -->
+    <servlet>
+        <servlet-name>Userservlet</servlet-name>
+        <servlet-class>daixin.web.UserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Userservlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>daixin.web.BookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/manager/bookSer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <servlet-class>daixin.web.ClientBookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <url-pattern>/client/bookSer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Kaptcha</servlet-name>
+        <url-pattern>/Code</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CarServlet</servlet-name>
+        <servlet-class>daixin.web.CarServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CarServlet</servlet-name>
+        <url-pattern>/carServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>daixin.web.OrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
+<!--    filter-->
+    <filter>
+        <filter-name>FilterManager</filter-name>
+        <filter-class>daixin.Filter.FilterManager</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterManager</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookSer</url-pattern>
+<!--        filter可以配置多个拦截地址-->
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterTransaction</filter-name>
+        <filter-class>daixin.Filter.FilterTransaction</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterTransaction</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!--        filter可以配置多个拦截地址-->
+    </filter-mapping>
+    
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages/error/Error500.html</location>
+    </error-page>
+
+<!--    <error-page>-->
+<!--        <error-code>404</error-code>-->
+<!--        <location>/pages/error/Error500.html</location>-->
+<!--    </error-page>-->
+</web-app>
